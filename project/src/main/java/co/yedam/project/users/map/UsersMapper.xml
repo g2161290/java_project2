@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.project.users.map.UsersMapper">
+	<select id="usersSelectList" resultType="co.yedam.project.users.service.UsersVO">
+		SELECT * FROM USERS ORDER BY USERS_SCORE DESC, USERS_SCORE_DATE DESC
+	</select>
+	
+	<select id="usersSelect" resultType="co.yedam.project.users.service.UsersVO">
+		SELECT * FROM USERS WHERE USERS_ID=#{usersId}
+		<if test="usersPassword!=null">
+			AND USERS_PASSWORD=#{usersPassword}
+		</if>
+	</select>
+	
+	<insert id="usersInsert" parameterType="co.yedam.project.users.service.UsersVO">
+		INSERT INTO USERS (USERS_ID, USERS_PASSWORD,USERS_NAME)
+		VALUES(#{usersId},#{usersPassword},#{usersName})
+	</insert>
+	
+	<update id="usersUpdate" parameterType="co.yedam.project.users.service.UsersVO">
+		UPDATE USERS
+		<set>
+			<if test="usersName != null">USERS_NAME = #{usersName}</if>
+			<if test="usersPassword != null">USERS_PASSWORD =#{usersPassword}</if>
+			<if test="usersScore != 0">USERS_SCORE = #{usersScore}, USERS_SCORE_DATE = #{usersScoreDate}</if>
+		</set>
+		WHERE USERS_ID = #{usersId}
+	</update>
+	
+	<delete id="usersDelete" parameterType="co.yedam.project.users.service.UsersVO">
+		DELETE FROM USERS WHERE USERS_ID = #{usersId} 
+	</delete>
+</mapper>
