@@ -9,6 +9,8 @@ public class UsersVO {
 	private String usersId;
 	private String usersPassword;
 	private String usersName;
-	private int usersScore;
-	private LocalDate usersScoreDate;
+	private int usersNumberquizScore;
+	private LocalDate usersNumberquizScoreDate;
+	private int usersBullsandcowsScore;
+	private LocalDate usersBullsandcowsScoreDate;
 }

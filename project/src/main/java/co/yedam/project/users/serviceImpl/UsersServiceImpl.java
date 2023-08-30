@@ -14,8 +14,13 @@ public class UsersServiceImpl implements UsersService{
 	private UsersMapper map = sqlSession.getMapper(UsersMapper.class);
 	
 	@Override
-	public List<UsersVO> usersSelectList() {
-		return map.usersSelectList();
+	public List<UsersVO> usersNumberquizSelectList() {
+		return map.usersNumberquizSelectList();
+	}
+	
+	@Override
+	public List<UsersVO> usersBullsandcowsSelectList() {
+		return map.usersBullsandcowsSelectList();
 	}
 
 	@Override
